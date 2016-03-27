@@ -1,0 +1,269 @@
+package ro.utcn.pt.bonta.presentation;
+
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.util.ArrayList;
+import java.util.Random;
+
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
+import ro.utcn.pt.bonta.model.Customer;
+import ro.utcn.pt.bonta.model.Order;
+import ro.utcn.pt.bonta.model.Product;
+
+public class OrderScreen {
+	private Customer selectedCustomer;
+	private Product selectedProduct;
+	private int selectedQuantity;
+
+	public JFrame mainFrame;
+	private JPanel controlPanel;
+
+	private JComboBox<?> customersDropDownList;
+	private JComboBox<?> productsDropDownList;
+	private JComboBox<?> quantityDropDownList;
+
+	private JButton cancelButton;
+	private JButton finishButton;
+	private JButton showProductsButton;
+	private JButton printBillButton;
+
+	private JButton addProductButton;
+
+	private TableScreen tableScreen;
+
+	private AppInterfaceButtonEvents buttonEventHandler;
+	private ArrayList<Customer> customersList;
+	private ArrayList<Product> productsList;
+	private ArrayList<Order> allOrdersList;
+	private ArrayList<Order> newOrdersList;
+	
+
+	public OrderScreen(AppInterfaceButtonEvents buttonEventHandler) {
+		this.buttonEventHandler = buttonEventHandler;
+		System.out.println("*****************");
+		this.newOrdersList = new ArrayList<Order>();
+	}
+
+	public void prepareComponents(ArrayList<Customer> customersList, ArrayList<Product> productsList, ArrayList<Order> ordersList) {
+		this.customersList = customersList;
+		this.productsList = productsList;
+		this.allOrdersList = ordersList;
+		this.prepareGUI();
+		this.prepareCustomerSelection();
+	}
+
+	private void prepareGUI() {
+		mainFrame = new JFrame("Place an order");
+		mainFrame.setSize(500, 400);
+		mainFrame.setLayout(new GridLayout(1, 1));
+		mainFrame.addWindowListener(new WindowAdapter() {
+			public void windowClosing(WindowEvent windowEvent) {
+				System.exit(0);
+			}
+		});
+
+		controlPanel = new JPanel();
+		controlPanel.setLayout(new GridLayout(3, 1));
+
+		mainFrame.add(controlPanel);
+		mainFrame.setVisible(false);
+	}
+
+	private void prepareCustomerSelection() {
+		cancelButton = new JButton("Cancel");
+		cancelButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				buttonEventHandler.nothingHappenedOnUI();
+				mainFrame.setVisible(false);
+				mainFrame.remove(controlPanel);
+			}
+		});
+		String[] customers = new String[customersList.size() + 1];
+		customers[0] = "Select customer";
+		int size = customersList.size();
+		int index;
+		for (index = 0; index < size; ++index) {
+			customers[index + 1] = customersList.get(index).getCNP() + " " + customersList.get(index).getName();
+		}
+
+		customersDropDownList = new JComboBox(customers);
+		controlPanel.add(customersDropDownList);
+		controlPanel.add(cancelButton);
+
+		customersDropDownList.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (customersDropDownList.getSelectedIndex() != 0) {
+					selectedCustomer = customersList.get(customersDropDownList.getSelectedIndex() - 1);
+					mainFrame.remove(controlPanel);
+					prepareProductSelection();
+				}
+			}
+		});
+	}
+
+	public void prepareProductSelection() {
+
+		controlPanel = new JPanel();
+		controlPanel.setLayout(new GridLayout(8, 1));
+		mainFrame.add(controlPanel);
+
+		selectedQuantity = 0;
+		selectedProduct = new Product("", "", -1, -1);
+
+		finishButton = new JButton("Finish order");
+		finishButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				System.out.println("asdasdasd"+newOrdersList.get(0).getId());
+
+				buttonEventHandler.orderSent(newOrdersList);
+				System.out.println("asdadas"+newOrdersList.get(0).getId());
+
+				mainFrame.setVisible(false);
+				mainFrame.remove(controlPanel);
+			}
+		});
+
+		showProductsButton = new JButton("Show the shopping cart");
+		showProductsButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				showShoppingList();
+				mainFrame.remove(controlPanel);
+			}
+		});
+
+		printBillButton = new JButton("Print bill in txt format");
+		printBillButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				printOrder();
+				buttonEventHandler.orderSent(newOrdersList);
+				mainFrame.setVisible(false);
+				mainFrame.remove(controlPanel);
+			}
+		});
+
+		addProductButton = new JButton("Add product");
+		addProductButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (!(selectedProduct.getId().length() > 0)) {
+					JOptionPane.showMessageDialog(mainFrame, "Select product!");
+				} else if (selectedQuantity == 0) {
+					JOptionPane.showMessageDialog(mainFrame, "Select quantity!");
+				} else {
+					if (selectedProduct.getQuantity() < selectedQuantity) {
+						JOptionPane.showMessageDialog(mainFrame, "Not enough products of type: " + selectedProduct.getName() + "!");
+					} else {
+						Order order = new Order(selectedCustomer.getCNP() + ":" + selectedProduct.getId(), selectedCustomer.getCNP(), selectedProduct.getId(), selectedQuantity);
+						int index;
+						/*for (index = 0; index < newOrdersList.size();++index){
+							System.out.println("id for order" + newOrdersList.get(index).getId() + "****" + order.getId());
+							if (newOrdersList.get(index).getId().equals(order.getId())){
+								newOrdersList.remove(index);
+								break;
+							}
+						}*/
+						
+//						newOrdersList.remove(order);
+						
+						
+						System.out.println("id for order" + order.getId());
+
+						newOrdersList.add(order);
+						int size = newOrdersList.size();
+						for (index = 0; index < size;++index){
+							System.out.println("2**********************id for order" + newOrdersList.get(index).getId());
+							
+						}
+
+						mainFrame.remove(controlPanel);
+						JOptionPane.showMessageDialog(mainFrame, "Product added to shopping cart!");
+						prepareProductSelection();
+					}
+				}
+			}
+		});
+		cancelButton = new JButton("Cancel");
+		cancelButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				buttonEventHandler.nothingHappenedOnUI();
+				mainFrame.setVisible(false);
+			}
+		});
+		String[] products = new String[productsList.size() + 1];
+		products[0] = "Select Product";
+		int size = productsList.size();
+		int index;
+		for (index = 0; index < size; ++index) {
+			products[index + 1] = productsList.get(index).getName() + " " + productsList.get(index).getPrice();
+		}
+		String[] quantities = new String[100];
+		quantities[0] = "Select Quantity";
+
+		for (index = 1; index < 100; index++) {
+			quantities[index] = String.valueOf(index);
+		}
+
+		productsDropDownList = new JComboBox(products);
+		quantityDropDownList = new JComboBox(quantities);
+
+		productsDropDownList.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (productsDropDownList.getSelectedIndex() != 0) {
+					selectedProduct = productsList.get(productsDropDownList.getSelectedIndex() - 1);
+					System.out.println("id of selectd product:" + selectedProduct.getId());
+				} else {
+					selectedProduct = new Product("", "", -1, -1);
+				}
+			}
+		});
+		
+		quantityDropDownList.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (quantityDropDownList.getSelectedIndex() != 0) {
+					selectedQuantity = quantityDropDownList.getSelectedIndex();
+					System.out.println("quantity :" + selectedQuantity);
+
+				} else {
+					selectedQuantity = 0;
+				}
+			}
+		});
+
+		controlPanel.add(productsDropDownList);
+		controlPanel.add(quantityDropDownList);
+		controlPanel.add(addProductButton);
+		controlPanel.add(finishButton);
+		controlPanel.add(showProductsButton);
+		controlPanel.add(printBillButton);
+
+		controlPanel.add(cancelButton);
+
+		controlPanel.repaint();
+
+		mainFrame.setVisible(true);
+		size = newOrdersList.size();
+	}
+
+	/*
+	 * placeButtons(): Add elements on the controlPanel
+	 */
+	private void showShoppingList() {
+		tableScreen = new TableScreen(this);
+		tableScreen.prepareComponents(newOrdersList);
+		tableScreen.mainFrame.setVisible(true);
+	}
+
+	private void printOrder() {
+		System.out.println("Print the order\n");
+	}
+	
+	
+}

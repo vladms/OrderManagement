@@ -1,0 +1,40 @@
+package ro.utcn.pt.bonta.model;
+
+public class Customer {
+	private String CNP;
+	private String name;
+	private int age;
+	
+	public Customer(String CNP, String name, int age){
+		
+		
+	}
+
+	public Customer(String cnp, String name, String age) {
+		// TODO Auto-generated constructor stub
+	}
+
+	public String getCNP() {
+		return CNP;
+	}
+
+	public void setCNP(String cNP) {
+		CNP = cNP;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public int getAge() {
+		return age;
+	}
+
+	public void setAge(int age) {
+		this.age = age;
+	}
+}

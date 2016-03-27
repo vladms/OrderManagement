@@ -1,0 +1,24 @@
+1458664704900	Delete element
+1458665246930	Encapsulate field 'id'
+1458666246629	Rename package 'ro.utcn.pt.bonta.gui'
+1458666281135	Rename package 'ro.utcn.pt.bonta.logic'
+1458666307773	Delete element
+1458976489572	Rename type 'ButtonEventHandler'
+1458981979586	Rename type 'Controller'
+1458982090447	Move compilation unit
+1458983166116	Rename method 'prepareUserSelection'
+1458983180804	Rename field 'usersDropDownList'
+1458983990511	Rename field 'CNP'
+1458984297063	Rename method 'newUserCreated'
+1458986980767	Rename method 'newProductCreated'
+1458994947928	Encapsulate field 'quantity'
+1458996343304	Rename type 'CreateUserScreen'
+1458996355236	Rename field 'createUserScreen'
+1458996461550	Rename field 'usersDropDownList'
+1458998855676	Encapsulate field 'customerCNP'
+1459000407411	Delete element
+1459006257619	Rename field 'showProducts'
+1459006268994	Rename field 'printBill'
+1459009033516	Rename package 'ro.utcn.pt.bonta.DAL'
+1459009290342	Delete element
+1459009434152	Encapsulate field 'products'

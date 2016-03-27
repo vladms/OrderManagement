@@ -1,0 +1,22 @@
+package ro.utcn.pt.bonta.presentation;
+
+import java.util.ArrayList;
+
+import ro.utcn.pt.bonta.model.Customer;
+import ro.utcn.pt.bonta.model.Order;
+import ro.utcn.pt.bonta.model.Product;
+
+public class Main {
+	private static MainScreen mainScreen;
+	
+	private ArrayList<Customer> customersList;
+	private ArrayList<Product> productsList;
+	private ArrayList<Order> ordersList;
+
+	public static void main(String[] args) {
+	
+
+		mainScreen = new MainScreen();
+
+	}
+}

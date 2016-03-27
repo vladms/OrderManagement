@@ -1,0 +1,7 @@
+package ro.utcn.pt.bonta.model;
+
+public class Warehouse {
+	public Warehouse(){
+		
+	}
+}

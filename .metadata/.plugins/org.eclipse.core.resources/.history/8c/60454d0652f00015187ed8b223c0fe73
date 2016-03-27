@@ -1,0 +1,122 @@
+package ro.utcn.pt.bonta.presentation;
+
+import java.awt.Color;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
+public class MainScreen {
+	private JFrame mainFrame;
+	private JPanel controlPanel;
+	private JLabel hintLabel;
+	private JPanel polynomsPanel;
+	private JPanel resultPanel;
+	
+	JButton createCustomer;
+	JButton editCustomer;
+	JButton deleteCustomer;
+	JButton showCustomers;
+	JButton insertProduct;
+	JButton editProduct;
+	JButton deleteProduct;
+	JButton showProducts;
+	
+	JLabel resultPolynomTextArea = new JLabel();
+	public MainScreen(){
+		this.prepareGUI();
+		this.placeButtons();
+	}
+
+	public void prepareGUI() {
+		mainFrame = new JFrame("Polynoms");
+		mainFrame.setSize(1200, 1200);
+		mainFrame.setLayout(new GridLayout(5, 0));
+		mainFrame.addWindowListener(new WindowAdapter() {
+			public void windowClosing(WindowEvent windowEvent) {
+				System.exit(0);
+			}
+		});
+
+		controlPanel = new JPanel();
+		controlPanel.setLayout(new GridLayout(2, 3));
+
+		polynomsPanel = new JPanel();
+		polynomsPanel.setLayout(new GridLayout(2, 1));
+
+		resultPanel = new JPanel();
+		resultPanel.setLayout(new GridLayout(1, 1));
+		resultPanel.add(resultPolynomTextArea);
+
+		hintLabel = new JLabel();
+		hintLabel.setLayout(new GridLayout(1, 1));
+		hintLabel.setText("Example: 2x^6+3x^2+1x^1+1x^0");
+		mainFrame.add(controlPanel);
+		mainFrame.add(polynomsPanel);
+		mainFrame.add(hintLabel);
+		mainFrame.add(resultPanel);
+		
+		mainFrame.setVisible(true);
+	}
+
+	/*
+	 * placeButtons(): Add buttons on the controlPanel
+	 */
+	private void placeButtons() {
+
+		createCustomer = new JButton("Create a new customer");
+		editCustomer = new JButton("Edit customer");
+		deleteCustomer = new JButton("Delete customer");
+		showCustomers = new JButton("View cstomers");
+		
+		createProduct = new JButton("Create a new customer");
+		editProduct = new JButton("Edit customer");
+		deleteProduct = new JButton("Delete customer");
+		showProducts = new JButton("View cstomers");
+
+		final JTextField firstPolynomTextField = new JTextField(6);
+		final JTextField secondPolynomTextField = new JTextField(6);
+		firstPolynomTextField.setText("First polynomial");
+		secondPolynomTextField.setText("Second polynomial");
+		firstPolynomTextField.setBackground(Color.lightGray);
+		secondPolynomTextField.setBackground(Color.lightGray);
+	
+		controlPanel.add(addPolynomsButton);
+		controlPanel.add(subPolynomsButton);
+		controlPanel.add(mulPolynomsButton);
+		controlPanel.add(divPolynomsButton);
+		controlPanel.add(derivatePolynomsButton);
+		controlPanel.add(integratePolynomsButton);
+		polynomsPanel.add(firstPolynomTextField);
+		polynomsPanel.add(secondPolynomTextField);
+
+		mainFrame.setVisible(true);
+	}
+
+	
+
+	public void showResultPolynom(String polynomString) {
+		resultPolynomTextArea.setText(polynomString);
+		
+		resultPanel.setVisible(true);
+		mainFrame.repaint();
+		mainFrame.setVisible(true);
+	}
+	
+	public void showResultPolynom(String firstPolynomString, String secondPolynomString) {
+
+		resultPolynomTextArea.setText("Quotient: " + firstPolynomString + "\nRemainder: " + secondPolynomString);
+	
+		resultPanel.setVisible(true);
+		mainFrame.repaint();
+		mainFrame.setVisible(true);
+	}
+
+}

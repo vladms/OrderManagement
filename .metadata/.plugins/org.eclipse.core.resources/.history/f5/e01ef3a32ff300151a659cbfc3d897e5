@@ -1,0 +1,12 @@
+package ro.utcn.pt.bonta.main;
+
+
+public class Main {
+	
+	private Controller controller;
+	public static void main(String[] args) {
+	controller = new Controller();
+		
+
+	}
+}

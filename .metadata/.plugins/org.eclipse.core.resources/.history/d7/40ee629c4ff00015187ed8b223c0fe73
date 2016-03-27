@@ -1,0 +1,13 @@
+package ro.utcn.pt.bonta.model;
+
+public class Warehouse {
+	
+	private int id;
+	private String address;
+	private ArrayList<Product> products;
+	
+	public Warehouse(int id, String address){
+		this.id = id;
+		this.address = address;
+	}
+}

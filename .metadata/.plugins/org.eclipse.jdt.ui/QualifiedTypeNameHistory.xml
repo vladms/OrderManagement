@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="javax.swing.JComboBox"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="ro.utcn.pt.bonta.logic.Controller.Controller"/>
+<fullyQualifiedTypeName name="ro.utcn.pt.bonta.logic.Controller"/>
+<fullyQualifiedTypeName name="javax.swing.JTable"/>
+<fullyQualifiedTypeName name="java.lang.Integer"/>
+<fullyQualifiedTypeName name="javax.swing.JOptionPane"/>
+<fullyQualifiedTypeName name="java.lang.reflect.Method"/>
+<fullyQualifiedTypeName name="java.awt.List"/>
+<fullyQualifiedTypeName name="java.lang.reflect.Modifier"/>
+<fullyQualifiedTypeName name="ro.utcn.pt.bonta.model.Customer"/>
+<fullyQualifiedTypeName name="javax.swing.JScrollPane"/>
+<fullyQualifiedTypeName name="javax.swing.DefaultCellEditor"/>
+<fullyQualifiedTypeName name="java.util.EventObject"/>
+<fullyQualifiedTypeName name="ro.utcn.pt.bonta.model.Product"/>
+<fullyQualifiedTypeName name="ro.utcn.pt.bonta.model.Order"/>
+<fullyQualifiedTypeName name="ro.utcn.pt.bonta.model.Warehouse"/>
+</qualifiedTypeNameHistroy>

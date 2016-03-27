@@ -1,0 +1,12 @@
+package ro.utcn.pt.bonta.model;
+
+import java.util.ArrayList;
+
+public class Warehouse {
+	
+	private ArrayList<Product> products;
+	
+	public Warehouse(){
+		products = new ArrayList<Products>();
+	}
+}

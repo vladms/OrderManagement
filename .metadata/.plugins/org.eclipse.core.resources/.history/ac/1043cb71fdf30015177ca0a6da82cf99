@@ -1,0 +1,26 @@
+package ro.utcn.pt.bonta.DAO;
+
+import java.sql.Connection;
+import java.sql.Statement;
+import java.util.ArrayList;
+
+import ro.utcn.pt.bonta.model.Customer;
+import ro.utcn.pt.bonta.model.Order;
+import ro.utcn.pt.bonta.model.Product;
+
+public class OrderDAO {
+	
+	private Connection c;
+	private Statement stmt;
+
+	public CustomerDAO(Connection c, Statement stmt) {
+		this.c = c;
+		this.stmt = stmt;
+	}
+	
+	public static int insertNewOrder(ArrayList<Customer> customerList, ArrayList<Product> productsList,
+			Order ordersList) {
+
+		return 0;
+	}
+}

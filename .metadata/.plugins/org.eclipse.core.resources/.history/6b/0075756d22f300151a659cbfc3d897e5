@@ -1,0 +1,5 @@
+package ro.utcn.pt.bonta.presentation;
+
+public interface ButtonEventHandler {
+	 public void newUserCreated (String cnp, String name, String age);
+}

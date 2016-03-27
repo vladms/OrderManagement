@@ -1,0 +1,6 @@
+package ro.utcn.pt.bonta.model;
+	private int quantity;
+	private
+public class Product {
+
+}

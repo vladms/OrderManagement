@@ -1,0 +1,57 @@
+package ro.utcn.pt.bonta.logic;
+
+import java.util.ArrayList;
+import java.sql.*;
+
+import ro.utcn.pt.bonta.DAO.CustomerDAO;
+import ro.utcn.pt.bonta.DAO.OrderDAO;
+import ro.utcn.pt.bonta.DAO.ProductDAO;
+import ro.utcn.pt.bonta.model.Customer;
+import ro.utcn.pt.bonta.model.Order;
+import ro.utcn.pt.bonta.model.Product;
+import ro.utcn.pt.bonta.presentation.MainScreen;
+
+public class Controller {
+	private static MainScreen mainScreen;
+
+	private ArrayList<Customer> customersList;
+	private ArrayList<Product> productsList;
+	private ArrayList<Order> ordersList;
+
+	private Connection c;
+	private Statement stmt;
+	
+	private CustomerDAO customerDAO;
+	private ProductDAO productDAO;
+	private OrderDAO orderDAO;
+
+	public Controller() {
+		customersList = new ArrayList<Customer>();
+		productsList = new ArrayList<Product>();
+		ordersList = new ArrayList<Order>();
+		Connection c = null;
+		Statement stmt = null;
+		try {
+			Class.forName("org.sqlite.JDBC");
+			c = DriverManager.getConnection("jdbc:sqlite:pt.db");
+			c.setAutoCommit(false);
+			System.out.println("Opened database successfully");
+
+//			stmt = c.createStatement();
+//			String sql = "INSERT INTO Customer VALUES ('11', 'nameasd', 23);";
+//			stmt.executeUpdate(sql);
+//
+//			stmt.close();
+//			c.commit();
+//			c.close();
+		} catch (Exception e) {
+			System.err.println(e.getClass().getName() + ": " + e.getMessage());
+			System.exit(0);
+		}
+		customerDAO = new CustomerDAO(c, stmt);
+		customerDAO = new CustomerDAO(c, stmt);
+		customerDAO = new CustomerDAO(c, stmt);
+
+		mainScreen = new MainScreen(c, stmt, customersList, productsList, ordersList);
+	}
+}

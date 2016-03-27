@@ -1,0 +1,57 @@
+package ro.utcn.pt.bonta.DAO;
+
+import java.util.ArrayList;
+
+import ro.utcn.pt.bonta.model.Customer;
+
+public class CustomerDAO {
+	private String cnp;
+	private String name;
+	private int age;
+	
+	public CustomerDAO(String CNP, String name, int age){
+		this.cnp = CNP;
+		this.name = name;
+		this.age = age;
+		
+	}
+	
+	public static int insertNewCustomer(ArrayList<Customer> customersList, Customer customer){
+		
+		return 0;
+	}
+	
+	public static int updateCustomer(ArrayList<Customer> customersList, Customer oldCustomer, Customer editedCustomer){
+		
+		return 0;
+	}
+	
+	public static int deleteCustomer(ArrayList<Customer> customersList, Customer editedCustomer){
+		
+		return 0;
+	}
+
+	public String getCNP() {
+		return cnp;
+	}
+
+	public void setCNP(String cnp) {
+		this.cnp = cnp;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public int getAge() {
+		return age;
+	}
+
+	public void setAge(int age) {
+		this.age = age;
+	}
+}

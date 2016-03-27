@@ -1,0 +1,289 @@
+package ro.utcn.pt.bonta.presentation;
+
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.sql.Connection;
+import java.sql.Statement;
+import java.util.ArrayList;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
+import ro.utcn.pt.bonta.DAO.CustomerDAO;
+import ro.utcn.pt.bonta.DAO.ProductDAO;
+import ro.utcn.pt.bonta.model.Customer;
+import ro.utcn.pt.bonta.model.Order;
+import ro.utcn.pt.bonta.model.Product;
+
+public class MainScreen implements AppInterfaceButtonEvents {
+	private JFrame mainFrame;
+	private JPanel controlPanel;
+
+	private JButton insertCustomer;
+	private JButton editCustomer;
+	private JButton showCustomers;
+
+	private JButton insertProduct;
+	private JButton editProduct;
+	private JButton showProducts;
+
+	private JButton placeOrder;
+
+	private CreateCustomerScreen createCustomerScreen;
+	private EditCustomerScreen editCustomerScreen;
+
+	private CreateProductScreen createProductScreen;
+	private EditProductScreen editProductScreen;
+
+	private TableScreen tableScreen;
+
+	private OrderScreen orderScreen;
+
+	private ArrayList<Customer> customersList;
+	private ArrayList<Product> productsList;
+	private ArrayList<Order> ordersList;
+
+	private Connection c;
+	private Statement stmt;
+
+	JLabel resultPolynomTextArea = new JLabel();
+
+	public MainScreen() {
+
+	}
+
+	public MainScreen(Connection c, Statement stmt, ArrayList<Customer> customersList, ArrayList<Product> productsList,
+			ArrayList<Order> ordersList) {
+		this.customersList = customersList;
+		this.productsList = productsList;
+		this.ordersList = ordersList;
+		this.c = c;
+		this.stmt = stmt;
+		this.prepareGUI();
+		this.placeButtons();
+	}
+
+	public void prepareGUI() {
+		mainFrame = new JFrame("OrderedManagement");
+		mainFrame.setSize(1200, 1200);
+		mainFrame.setLayout(new GridLayout(1, 1));
+		mainFrame.addWindowListener(new WindowAdapter() {
+			public void windowClosing(WindowEvent windowEvent) {
+				System.exit(0);
+			}
+		});
+
+		controlPanel = new JPanel();
+		controlPanel.setLayout(new GridLayout(7, 1));
+
+		mainFrame.add(controlPanel);
+
+		mainFrame.setVisible(true);
+	}
+
+	/*
+	 * placeButtons(): Add buttons on the controlPanel
+	 */
+	private void placeButtons() {
+		createCustomerScreen = new CreateCustomerScreen(this);
+		createProductScreen = new CreateProductScreen(this);
+		editCustomerScreen = new EditCustomerScreen(this);
+		editProductScreen = new EditProductScreen(this);
+		insertCustomer = new JButton("Add customer");
+		editCustomer = new JButton("Edit customer");
+		showCustomers = new JButton("View customers");
+		tableScreen = new TableScreen(this);
+		orderScreen = new OrderScreen(this);
+
+		insertProduct = new JButton("Add product");
+		editProduct = new JButton("Edit product");
+		showProducts = new JButton("View products");
+
+		placeOrder = new JButton("Place order");
+
+		controlPanel.add(insertCustomer);
+		controlPanel.add(editCustomer);
+		controlPanel.add(showCustomers);
+		controlPanel.add(insertProduct);
+		controlPanel.add(editProduct);
+		controlPanel.add(showProducts);
+		controlPanel.add(placeOrder);
+
+		insertCustomer.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				enableButtons(false);
+				createCustomerScreen.prepareComponents(customersList);
+				createCustomerScreen.mainFrame.setVisible(true);
+			}
+		});
+		editCustomer.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				enableButtons(false);
+				editCustomerScreen.prepareComponents(customersList);
+				editCustomerScreen.mainFrame.setVisible(true);
+			}
+		});
+		showCustomers.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				enableButtons(false);
+				tableScreen.prepareComponents(customersList);
+				tableScreen.mainFrame.setVisible(true);
+			}
+		});
+		insertProduct.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				enableButtons(false);
+				createProductScreen.prepareComponents(productsList);
+				createProductScreen.mainFrame.setVisible(true);
+			}
+		});
+		editProduct.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				enableButtons(false);
+				editProductScreen.prepareComponents(productsList);
+				editProductScreen.mainFrame.setVisible(true);
+			}
+		});
+		showProducts.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				enableButtons(false);
+				tableScreen.prepareComponents(productsList);
+				tableScreen.mainFrame.setVisible(true);
+			}
+		});
+
+		placeOrder.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				enableButtons(false);
+				orderScreen.prepareComponents(customersList, productsList, ordersList);
+				orderScreen.mainFrame.setVisible(true);
+			}
+		});
+		mainFrame.setVisible(true);
+	}
+
+	public void newCustomerCreated(String cnp, String name, int age) {
+		enableButtons(true);
+		System.out.println(cnp + " " + name + " " + age);
+		Customer customer = new Customer(cnp, name, age);
+		if (CustomerDAO.insertNewCustomer(customersList, customer) == 1) {
+			customersList.add(customer);
+		} else {
+			System.out.println("Sth went wrong");
+		}
+	}
+
+	public void newProductCreated(String id, String name, double price, int quantity) {
+		enableButtons(true);
+
+		System.out.println(id + " " + name + " " + price);
+		Product product = new Product(id, name, price, quantity);
+		if (ProductDAO.insertNewProduct(productsList, product) == 1) {
+			productsList.add(product);
+		} else {
+			System.out.println("Sth went wrong");
+		}
+	}
+
+	public void customerEdited(Customer selectedCustomer, String cnp, String name, int age) {
+		enableButtons(true);
+		if (cnp.equals("") && name.equals("") && age == -1) {
+			int size = customersList.size();
+			int index;
+			for (index = 0; index < size; ++index) {
+				Customer customer = customersList.get(index);
+				if (customer.getCNP() == selectedCustomer.getCNP()) {
+					if (CustomerDAO.deleteCustomer(customersList, selectedCustomer) == 1) {
+						customersList.remove(index);
+						break;
+					} else {
+						System.out.println("Sth went wrong");
+					}
+				}
+			}
+		} else {
+			System.out.println(cnp + " " + name + " " + age);
+			int size = customersList.size();
+			int index;
+			for (index = 0; index < size; ++index) {
+				Customer customer = customersList.get(index);
+				if (customer.getCNP() == selectedCustomer.getCNP()) {
+					Customer editedCustomer = new Customer(cnp, name, age);
+					if (CustomerDAO.updateCustomer(customersList, customer, editedCustomer) == 1) {
+						customersList.remove(index);
+						customersList.add(editedCustomer);
+					} else {
+						System.out.println("Sth went wrong");
+					}
+				}
+			}
+		}
+	}
+
+	public void productEdited(Product selectedProduct, String id, String name, double price, int quantity) {
+		enableButtons(true);
+		if (id.equals("") && name.equals("") && price == -1 && quantity == -1) {
+			int size = productsList.size();
+			int index;
+			for (index = 0; index < size; ++index) {
+				Product product = productsList.get(index);
+				if (product.getId() == selectedProduct.getId()) {
+					if (ProductDAO.deleteProduct(productsList, selectedProduct) == 1) {
+						productsList.remove(index);
+						break;
+					} else {
+						System.out.println("Sth went wrong");
+					}
+				}
+			}
+		} else {
+			System.out.println(id + " " + name + " " + price);
+			int size = productsList.size();
+			int index;
+			for (index = 0; index < size; ++index) {
+				Product product = productsList.get(index);
+				if (product.getId() == selectedProduct.getId()) {
+					Product editedProduct = new Product(id, name, price, quantity);
+					if (ProductDAO.updateProduct(productsList, product, editedProduct) == 1) {
+						productsList.remove(index);
+						productsList.add(editedProduct);
+					} else {
+						System.out.println("Sth went wrong");
+					}
+
+				}
+			}
+		}
+	}
+
+	private void enableButtons(boolean enable) {
+		insertCustomer.setEnabled(enable);
+		editCustomer.setEnabled(enable);
+		showCustomers.setEnabled(enable);
+
+		insertProduct.setEnabled(enable);
+		editProduct.setEnabled(enable);
+		showProducts.setEnabled(enable);
+
+		placeOrder.setEnabled(enable);
+	}
+
+	public void nothingHappenedOnUI() {
+		enableButtons(true);
+	}
+
+	public void orderSent(ArrayList<Order> ordersList) {
+		enableButtons(true);
+		if (CustomerDAO.insertNewCustomer(customersList, customer) == 1) {
+			customersList.add(customer);
+		} else {
+			System.out.println("Sth went wrong");
+		}
+
+	}
+}

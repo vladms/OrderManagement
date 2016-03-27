@@ -1,0 +1,15 @@
+package ro.utcn.pt.bonta.presentation;
+
+import java.util.ArrayList;
+
+public class Controller {
+	private static MainScreen mainScreen;
+	private ArrayList<Customer> customersList;
+	private ArrayList<Customer> customersList;
+	private ArrayList<Customer> customersList;
+
+	public static void main(String[] args) {
+		mainScreen = new MainScreen();
+
+	}
+}

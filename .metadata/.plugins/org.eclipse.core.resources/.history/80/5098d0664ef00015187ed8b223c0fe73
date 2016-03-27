@@ -1,0 +1,11 @@
+package ro.utcn.pt.bonta.model;
+
+public class Customer {
+	private String CNP;
+	private String name;
+	private int age;
+	
+	public Customer(String CNP, String name, int age){
+		
+	}
+}

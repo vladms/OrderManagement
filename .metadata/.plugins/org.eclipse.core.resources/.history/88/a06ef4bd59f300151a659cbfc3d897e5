@@ -1,0 +1,7 @@
+package ro.utcn.pt.bonta.presentation;
+
+public class TableScreenButtonHandler {
+	public void nothingHappenedOnUI();
+	public void nothingHappenedOnUI();
+
+}

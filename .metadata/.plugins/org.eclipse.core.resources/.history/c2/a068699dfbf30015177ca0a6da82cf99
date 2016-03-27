@@ -1,0 +1,43 @@
+package ro.utcn.pt.bonta.DAO;
+
+public class CustomerDAO {
+	private String cnp;
+	private String name;
+	private int age;
+	
+	public CustomerDAO(String CNP, String name, int age){
+		this.cnp = CNP;
+		this.name = name;
+		this.age = age;
+		
+	}
+	
+	public static int insertNewCustomer(ArrayList<Customer>, Customer customer){
+		
+		
+	}
+
+	public String getCNP() {
+		return cnp;
+	}
+
+	public void setCNP(String cnp) {
+		cnp = cnp;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public int getAge() {
+		return age;
+	}
+
+	public void setAge(int age) {
+		this.age = age;
+	}
+}

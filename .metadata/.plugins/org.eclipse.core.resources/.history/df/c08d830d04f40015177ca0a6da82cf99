@@ -1,0 +1,70 @@
+package ro.utcn.pt.bonta.model;
+
+import java.util.ArrayList;
+
+public class Order {
+	private String id;
+	private String customerCNP;
+	private Product product;
+
+	private ArrayList<Product> products;
+	public Order(){
+		this.id = "-1";
+		this.customerCNP = "";
+		this.products = new ArrayList<Product>();
+	}
+
+	public Order(String id, String customerCNP){
+		this.id = id;
+		this.setCustomerCNP(customerCNP);
+		products = new ArrayList<Product>();
+	}
+	
+	public void addProduct(Product product){
+		int size = products.size();
+		int index;
+		for (index = 0;index < size; ++index){
+			if (product.getId() == products.get(index).getId()){
+				products.remove(index);
+				break;
+			}
+		}
+		this.products.add(product);
+	}
+	
+	public void deleteProduct(Product productDelete){
+		int index = 0;
+		for (Product product : this.products){
+			if (product == productDelete){
+				this.products.remove(index);
+			}
+			index++;
+		}
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public ArrayList<Product> getProducts() {
+		return products;
+	}
+
+	public void setProducts(ArrayList<Product> products) {
+		this.products = products;
+	}
+
+	public String getCustomerCNP() {
+		return customerCNP;
+	}
+
+	public void setCustomerCNP(String customerCNP) {
+		this.customerCNP = customerCNP;
+	}
+	
+	
+}

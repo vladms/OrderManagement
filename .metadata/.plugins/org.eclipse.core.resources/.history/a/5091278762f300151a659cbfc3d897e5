@@ -1,0 +1,139 @@
+package ro.utcn.pt.bonta.presentation;
+
+import java.awt.GridLayout;
+import java.awt.List;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
+import java.lang.reflect.Modifier;
+import java.util.ArrayList;
+import java.util.EventObject;
+
+import javax.swing.DefaultCellEditor;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.JTextField;
+
+import ro.utcn.pt.bonta.model.Customer;
+import ro.utcn.pt.bonta.model.Product;
+
+public class TableScreen {
+	private boolean isOrderScreenParent;
+	public JFrame mainFrame;
+	private JPanel controlPanel;
+	
+	public OrderScreen orderScreen;
+
+	private JTable table;
+
+	private JButton cancelButton;
+
+	private AppInterfaceButtonEvents buttonEventHandler;
+
+	private ArrayList<?> list;
+
+	public TableScreen(OrderScreen orderScreen, String a) {
+		isOrderScreenParent = true;
+		this.orderScreen = orderScreen;
+	}
+
+	public TableScreen(AppInterfaceButtonEvents buttonEventHandler) {
+		this.buttonEventHandler = buttonEventHandler;
+		isOrderScreenParent = false;
+	}
+
+	public void prepareComponents(ArrayList<?> list) {
+		this.list = list;
+
+		this.prepareGUI();
+		this.prepareUserSelection();
+	}
+
+	private void prepareGUI() {
+		mainFrame = new JFrame("Edit product");
+		mainFrame.setSize(1200, 1200);
+		mainFrame.setLayout(new GridLayout(1, 1));
+		mainFrame.addWindowListener(new WindowAdapter() {
+			public void windowClosing(WindowEvent windowEvent) {
+				System.exit(0);
+			}
+		});
+
+		controlPanel = new JPanel();
+		controlPanel.setLayout(new GridLayout(2, 1));
+
+		mainFrame.add(controlPanel);
+		mainFrame.setVisible(false);
+	}
+
+	private void prepareUserSelection() {
+		if (list.size() > 0) {
+			ArrayList<Object> privateFields = new ArrayList<Object>();
+			System.out.println(list.getClass());
+
+			Field[] allFields = list.get(0).getClass().getDeclaredFields();
+
+			Object columnNames[] = new Object[allFields.length];
+			int index = 0;
+			for (Field field : allFields) {
+				if (Modifier.isPrivate(field.getModifiers())) {
+
+					privateFields.add(field);
+
+					columnNames[index] = field.getName();
+					System.out.println(columnNames[index]);
+
+					index++;
+				}
+			}
+			int size = list.size();
+
+			Object rowData[][] = new Object[size][256];
+			for (index = 0; index < size; ++index) {
+				int k = 0;
+				for (Field field : allFields) {
+					try {
+						field.setAccessible(true);
+						System.out.println(field.get(list.get(index)));
+						rowData[index][k] = field.get(list.get(index));
+						k++;
+					} catch (IllegalArgumentException e1) {
+						e1.printStackTrace();
+					} catch (IllegalAccessException e1) {
+						e1.printStackTrace();
+					}
+
+				}
+
+			}
+
+			table = new JTable(rowData, columnNames);
+			JScrollPane scrollPane = new JScrollPane();
+
+			scrollPane.setViewportView(table);
+			controlPanel.add(scrollPane);
+			table.setEnabled(false);
+		}
+		cancelButton = new JButton("Cancel");
+
+		cancelButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				orderScreen
+				if (!isOrderScreenParent) {
+					buttonEventHandler.nothingHappenedOnUI();
+				}
+				mainFrame.setVisible(false);
+				mainFrame.remove(controlPanel);
+			}
+		});
+
+		controlPanel.add(cancelButton);
+
+	}
+}

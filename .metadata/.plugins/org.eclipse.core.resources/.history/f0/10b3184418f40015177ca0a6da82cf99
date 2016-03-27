@@ -1,0 +1,118 @@
+package ro.utcn.pt.bonta.DAO;
+
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+
+import ro.utcn.pt.bonta.model.Customer;
+import ro.utcn.pt.bonta.model.Product;
+
+public class ProductDAO {
+	private static Connection c;
+	private static Statement stmt;
+
+	public ProductDAO(Connection c, Statement stmt) {
+		ProductDAO.c = c;
+		ProductDAO.stmt = stmt;
+	}
+	
+	public static ArrayList<Product> getProducts() {
+		ArrayList<Product>productsLists = new ArrayList<Product>();
+		try {
+			stmt = c.createStatement();
+			ResultSet rs = stmt.executeQuery( "SELECT * FROM Product;" );
+		      while ( rs.next() ) {
+		         String id = rs.getString("id");
+		         String  name = rs.getString("name");
+		         double price  = rs.getInt("price");
+		         int quantity = rs.getInt("quantity");
+		         productsLists.add(new Product(id, name, price, quantity));
+		         System.out.println( "id = " + id );
+		         System.out.println( "NAME = " + name );
+		         System.out.println( "price = " + price );
+		         System.out.println( "quantity = " + quantity );
+
+		         System.out.println();
+		      }
+		      rs.close();
+			stmt.close();
+			c.commit();
+		} catch (SQLException e) {
+			System.err.println(e.getClass().getName() + ": " + e.getMessage());
+			System.exit(0);
+			e.printStackTrace();
+		}
+		
+		return productsLists;
+	}
+
+	public static int insertNewProduct(ArrayList<Product> productsList, Product product) {
+
+		try {
+			stmt = c.createStatement();
+			String sql = "INSERT INTO Customer VALUES ('" + customer.getCNP() + "', '" + customer.getName() + "', "
+					+ customer.getAge() + ");";
+			System.out.println(sql);
+			stmt.executeUpdate(sql);
+			stmt.close();
+			c.commit();
+		} catch (SQLException e) {
+			System.err.println(e.getClass().getName() + ": " + e.getMessage());
+			e.printStackTrace();
+			return 0;
+		}
+		return 1;
+		}
+
+	public static int updateProduct(ArrayList<Product> customersList, Product oldCustomer, Product editedCustomer) {
+
+		return 0;
+	}
+
+	public static int deleteProduct(ArrayList<Product> customersList, Product deleteCustomer) {
+
+		return 0;
+	}
+	
+	public static int insertNewCustomer(ArrayList<Customer> customersList, Customer customer) {
+		
+	}
+
+	public static int updateCustomer(ArrayList<Customer> customersList, Customer oldCustomer, Customer editedCustomer) {
+		try {
+			stmt = c.createStatement();
+			String sql = "UPDATE Customer set cnp = '" + editedCustomer.getCNP() + "', name = '"
+					+ editedCustomer.getName() + "', age = " + editedCustomer.getAge() + " where cnp='"
+					+ oldCustomer.getCNP() + "';";
+			System.out.println(sql);
+
+			stmt.executeUpdate(sql);
+			c.commit();
+			stmt.close();
+		} catch (SQLException e) {
+			System.err.println(e.getClass().getName() + ": " + e.getMessage());
+			e.printStackTrace();
+			return 0;
+		}
+		return 1;
+	}
+
+	public static int deleteCustomer(ArrayList<Customer> customersList, Customer deleteCustomer) {
+		try {
+			stmt = c.createStatement();
+			String sql = "DELETE FROM Customer where cnp='" + deleteCustomer.getCNP() + "';";
+			System.out.println(sql);
+
+			stmt.executeUpdate(sql);	
+			c.commit();
+			stmt.close();
+		} catch (SQLException e) {
+			System.err.println(e.getClass().getName() + ": " + e.getMessage());
+			e.printStackTrace();
+			return 0;
+		}
+		return 1;
+	}
+}

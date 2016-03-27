@@ -1,0 +1,179 @@
+package ro.utcn.pt.bonta.presentation;
+
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.util.ArrayList;
+
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
+import ro.utcn.pt.bonta.model.Product;
+
+public class EditProductScreen {
+	private Product selectedProduct;
+
+	public JFrame mainFrame;
+	private JPanel controlPanel;
+
+	private JComboBox<?> productsDropDownList;
+
+	private JTextField idTextField;
+	private JTextField nameTextField;
+	private JTextField priceTextField;
+
+	private JButton cancelButton;
+	private JButton saveButton;
+
+	private AppInterfaceButtonEvents buttonEventHandler;
+
+	private ArrayList<Product> productsList;
+
+	public EditProductScreen(AppInterfaceButtonEvents buttonEventHandler) {
+		this.buttonEventHandler = buttonEventHandler;
+	}
+
+	public void prepareComponents(ArrayList<Product> productsList) {
+		this.productsList = productsList;
+
+		this.prepareGUI();
+		this.prepareProductSelection();
+	}
+
+	private void prepareGUI() {
+		mainFrame = new JFrame("Edit product");
+		mainFrame.setSize(500, 400);
+		mainFrame.setLayout(new GridLayout(1, 1));
+		mainFrame.addWindowListener(new WindowAdapter() {
+			public void windowClosing(WindowEvent windowEvent) {
+				System.exit(0);
+			}
+		});
+
+		controlPanel = new JPanel();
+		controlPanel.setLayout(new GridLayout(3, 1));
+
+		mainFrame.add(controlPanel);
+		mainFrame.setVisible(false);
+	}
+
+	private void prepareProductSelection() {
+		cancelButton = new JButton("Cancel");
+		cancelButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				buttonEventHandler.nothingHappenedOnUI();
+				mainFrame.setVisible(false);
+				mainFrame.remove(controlPanel);
+			}
+		});
+		String[] products = new String[productsList.size() + 1];
+		products[0] = "Select product";
+		int size = productsList.size();
+		int index;
+		for (index = 0; index < size; ++index) {
+			products[index + 1] = productsList.get(index).getId() + " " + productsList.get(index).getName();
+		}
+
+		productsDropDownList = new JComboBox(products);
+		controlPanel.add(productsDropDownList);
+		controlPanel.add(cancelButton);
+
+		productsDropDownList.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (productsDropDownList.getSelectedIndex() != 0) {
+					selectedProduct = productsList.get(productsDropDownList.getSelectedIndex() - 1);
+					mainFrame.remove(controlPanel);
+					placeElements();
+				}
+			}
+		});
+
+	}
+
+	/*
+	 * placeButtons(): Add elements on the controlPanel
+	 */
+	private void placeElements() {
+		controlPanel = new JPanel();
+		controlPanel.setLayout(new GridLayout(5, 1));
+		mainFrame.add(controlPanel);
+
+		idTextField = new JTextField(selectedProduct.getId());
+		nameTextField = new JTextField(selectedProduct.getName());
+		priceTextField = new JTextField(String.valueOf(selectedProduct.getPrice()));
+
+		cancelButton = new JButton("Cancel");
+		saveButton = new JButton("Edit product");
+
+		controlPanel.add(idTextField);
+		controlPanel.add(nameTextField);
+		controlPanel.add(priceTextField);
+		controlPanel.add(cancelButton);
+		controlPanel.add(saveButton);
+		controlPanel.repaint();
+		cancelButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				buttonEventHandler.nothingHappenedOnUI();
+				mainFrame.setVisible(false);
+				mainFrame.remove(controlPanel);
+			}
+		});
+
+		saveButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int errorNumber = 0;
+				if (nameTextField.getText().length() == 0) {
+					errorNumber = 4;
+				}
+				if (!(priceTextField.getText().matches("[0-9]+") && priceTextField.getText().length() > 0)) {
+					errorNumber = 2;
+					if (!(idTextField.getText().matches("[0-9]+") && idTextField.getText().length() > 0)) {
+						errorNumber = 3;
+					}
+				}
+				int size = productsList.size();
+				int index;
+				for (index = 0; index < size; ++index) {
+					if (productsList.get(index).getId() == idTextField.getText()
+							&& selectedProduct.getId() != productsList.get(index).getId()) {
+						isValid = false;
+					}
+				}
+				if (isValid) {
+					buttonEventHandler.productEdited(selectedProduct, idTextField.getText(), nameTextField.getText(),
+							Double.parseDouble(priceTextField.getText()));
+					mainFrame.setVisible(false);
+					mainFrame.remove(controlPanel);
+				} else {
+					String errorMessage;
+					switch (errorNumber) {
+					case 1:
+						errorMessage = "Product with ID:" + idTextField.getText() + " already exists!";
+						break;
+					case 2:
+						errorMessage = "ID should be numeric!";
+						break;
+					case 3:
+						errorMessage = "Price should be numeric!";
+						break;
+					case 4:
+						errorMessage = "Name should not be blank!";
+						break;
+					default:
+						errorMessage = "Error";
+						break;
+					}
+					JOptionPane.showMessageDialog(mainFrame, errorMessage);
+				}
+
+			}
+		});
+		mainFrame.setVisible(true);
+	}
+}

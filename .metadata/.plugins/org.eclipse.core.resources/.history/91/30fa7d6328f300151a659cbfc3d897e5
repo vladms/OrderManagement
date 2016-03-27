@@ -1,0 +1,9 @@
+package ro.utcn.pt.bonta.presentation;
+
+public interface AppInterfaceButtonEvents {
+	 public void newUserCreated (String cnp, String name, String age);
+	 public void newUserCreated (String cnp, String name, String age);
+
+	 public void newProductCreated (String id, String name, double price);
+
+}

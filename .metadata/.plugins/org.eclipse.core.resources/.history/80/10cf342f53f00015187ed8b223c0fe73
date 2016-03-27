@@ -1,0 +1,103 @@
+package ro.utcn.pt.bonta.presentation;
+
+import java.awt.Color;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
+public class MainScreen {
+	private JFrame mainFrame;
+	private JPanel controlPanel;
+	
+	JButton insertCustomer;
+	JButton editCustomer;
+	JButton showCustomers;
+	
+	JButton insertProduct;
+	JButton editProduct;
+	JButton showProducts;
+	
+	JButton placeOrder;
+
+	
+	JLabel resultPolynomTextArea = new JLabel();
+	public MainScreen(){
+		this.prepareGUI();
+		this.placeButtons();
+	}
+
+	public void prepareGUI() {
+		mainFrame = new JFrame("OrderedManagement");
+		mainFrame.setSize(1200, 1200);
+		mainFrame.setLayout(new GridLayout(1, 3));
+		mainFrame.addWindowListener(new WindowAdapter() {
+			public void windowClosing(WindowEvent windowEvent) {
+				System.exit(0);
+			}
+		});
+
+		controlPanel = new JPanel();
+		controlPanel.setLayout(new GridLayout(4, 1));
+
+
+		
+		mainFrame.add(controlPanel);
+		
+		mainFrame.setVisible(true);
+	}
+
+	/*
+	 * placeButtons(): Add buttons on the controlPanel
+	 */
+	private void placeButtons() {
+
+		insertCustomer = new JButton("Add customer");
+		editCustomer = new JButton("Edit customer");
+		showCustomers = new JButton("View cstomers");
+		
+		insertProduct = new JButton("Add product");
+		editProduct = new JButton("Edit product");
+		showProducts = new JButton("View products");
+	
+		placeOrder = new JButton("Place order");
+
+		
+		
+		controlPanel.add(insertCustomer);
+		controlPanel.add(editCustomer);
+		controlPanel.add(showCustomers);
+		controlPanel.add(insertProduct);
+		controlPanel.add(editProduct);
+		controlPanel.add(showProducts);
+		controlPanel.add(placeOrder);
+
+
+		mainFrame.setVisible(true);
+	}
+
+	
+
+	public void showResultPolynom(String polynomString) {
+		resultPolynomTextArea.setText(polynomString);
+		
+		mainFrame.repaint();
+		mainFrame.setVisible(true);
+	}
+	
+	public void showResultPolynom(String firstPolynomString, String secondPolynomString) {
+
+		resultPolynomTextArea.setText("Quotient: " + firstPolynomString + "\nRemainder: " + secondPolynomString);
+	
+		mainFrame.repaint();
+		mainFrame.setVisible(true);
+	}
+
+}

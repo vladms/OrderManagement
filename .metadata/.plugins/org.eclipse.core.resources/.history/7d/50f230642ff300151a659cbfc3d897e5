@@ -1,0 +1,10 @@
+package ro.utcn.pt.bonta.logic;
+
+import ro.utcn.pt.bonta.presentation.MainScreen;
+
+public class Controller {
+	public class Controller(){
+		mainScreen = new MainScreen();
+
+	}
+}

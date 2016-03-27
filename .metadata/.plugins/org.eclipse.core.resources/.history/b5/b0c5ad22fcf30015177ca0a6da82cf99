@@ -1,0 +1,14 @@
+package ro.utcn.pt.bonta.DAO;
+
+import java.util.ArrayList;
+
+import ro.utcn.pt.bonta.model.Customer;
+import ro.utcn.pt.bonta.model.Order;
+import ro.utcn.pt.bonta.model.Product;
+
+public class OrderDAO {
+	public static int insertNewOrder(ArrayList<Customer> customerList, ArrayList<Product>productsList, Order ordersList){
+		
+		return 0;
+	}
+}

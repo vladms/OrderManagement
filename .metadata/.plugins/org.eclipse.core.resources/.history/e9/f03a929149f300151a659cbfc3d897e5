@@ -1,0 +1,125 @@
+package ro.utcn.pt.bonta.presentation;
+
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.util.ArrayList;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
+import ro.utcn.pt.bonta.model.Customer;
+
+public class CreateUserScreen {
+	public JFrame mainFrame;
+	private JPanel controlPanel;
+
+	private JTextField cnpTextField;
+	private JTextField nameTextField;
+	private JTextField ageTextField;
+
+	private JButton cancelButton;
+	private JButton createButton;
+
+	private AppInterfaceButtonEvents buttonEventHandler;
+	private ArrayList<Customer> customersList;
+
+	public CreateUserScreen(AppInterfaceButtonEvents buttonEventHandler) {
+		this.buttonEventHandler = buttonEventHandler;
+
+	}
+
+	public void prepareComponents(ArrayList<Customer> customersList) {
+		this.customersList = customersList;
+		this.prepareGUI();
+		this.placeElements();
+	}
+
+	private void prepareGUI() {
+		mainFrame = new JFrame("Create new user");
+		mainFrame.setSize(500, 400);
+		mainFrame.setLayout(new GridLayout(1, 1));
+		mainFrame.addWindowListener(new WindowAdapter() {
+			public void windowClosing(WindowEvent windowEvent) {
+				System.exit(0);
+			}
+		});
+
+		controlPanel = new JPanel();
+		controlPanel.setLayout(new GridLayout(5, 1));
+
+		mainFrame.add(controlPanel);
+		mainFrame.setVisible(false);
+	}
+
+	/*
+	 * placeButtons(): Add elements on the controlPanel
+	 */
+	private void placeElements() {
+
+		cnpTextField = new JTextField("CNP");
+		nameTextField = new JTextField("Name");
+		ageTextField = new JTextField("Age");
+
+		cancelButton = new JButton("Cancel");
+		createButton = new JButton("Create user");
+
+		controlPanel.add(cnpTextField);
+		controlPanel.add(nameTextField);
+		controlPanel.add(ageTextField);
+		controlPanel.add(cancelButton);
+		controlPanel.add(createButton);
+
+		cancelButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				buttonEventHandler.nothingHappenedOnUI();
+				mainFrame.setVisible(false);
+			}
+		});
+
+		createButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int errorNumber = 0;
+				if (!(cnpTextField.getText().matches("[0-9]+") && cnpTextField.getText().length() > 2)) {
+					errorNumber = 2;
+					if (!(ageTextField.getText().matches("[0-9]+") && ageTextField.getText().length() > 2)) {
+						errorNumber = 3;
+					}
+				}
+				int size = customersList.size();
+				int index;
+				for (index = 0; index < size; ++index) {
+					if (customersList.get(index).getCNP().equals(cnpTextField.getText())) {
+						errorNumber = 1;
+					}
+				}
+
+				if (errorNumber == 0) {
+					buttonEventHandler.newCustomerCreated(cnpTextField.getText(), nameTextField.getText(),
+							Integer.parseInt(ageTextField.getText()));
+					mainFrame.setVisible(false);
+				} else {
+					String errorMessage;
+					switch(errorNumber){
+					case 1:
+						errorMessage = "Customer with CNP:" + cnpTextField.getText() + " already exists!";
+					case 1:
+						errorMessage = "Customer with CNP:" + cnpTextField.getText() + " already exists!";
+					case 1:
+						errorMessage = "Customer with CNP:" + cnpTextField.getText() + " already exists!";
+					default:
+						errorMessage = "Customer with CNP:" + cnpTextField.getText() + " already exists!";
+					}
+					JOptionPane.showMessageDialog(mainFrame,
+							"Customer with CNP:" + cnpTextField.getText() + " already exists!");
+				}
+
+			}
+		});
+	}
+}

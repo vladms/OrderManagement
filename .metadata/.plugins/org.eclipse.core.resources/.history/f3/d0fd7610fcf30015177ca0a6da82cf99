@@ -1,0 +1,23 @@
+package ro.utcn.pt.bonta.DAO;
+
+import java.util.ArrayList;
+
+import ro.utcn.pt.bonta.model.Customer;
+import ro.utcn.pt.bonta.model.Order;
+
+public class OrderDAO {
+	public static int insertNewOrder(Order ordersList){
+		
+		return 0;
+	}
+	
+	public static int updateCustomer(ArrayList<Customer> customersList, Customer oldCustomer, Customer editedCustomer){
+		
+		return 0;
+	}
+	
+	public static int deleteCustomer(ArrayList<Customer> customersList, Customer deleteCustomer){
+		
+		return 0;
+	}
+}

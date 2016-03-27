@@ -1,0 +1,5 @@
+package ro.utcn.pt.bonta.presentation;
+
+public interface ButtonEventHandler {
+	 public void newUserCreated (String operationString, String firstPolynomString, String secondPolynomString);
+}

@@ -1,0 +1,22 @@
+package ro.utcn.pt.bonta.DAO;
+
+import java.util.ArrayList;
+
+import ro.utcn.pt.bonta.model.Product;
+
+public class ProductDAO {
+	public static int insertNewProduct(ArrayList<Product> productsList, Product product) {
+
+		return 0;
+	}
+
+	public static int updateProduct(ArrayList<Customer> customersList, Customer oldCustomer, Customer editedCustomer) {
+
+		return 0;
+	}
+
+	public static int deleteProduct(ArrayList<Customer> customersList, Customer deleteCustomer) {
+
+		return 0;
+	}
+}

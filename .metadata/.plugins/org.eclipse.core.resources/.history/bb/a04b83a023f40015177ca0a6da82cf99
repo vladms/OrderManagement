@@ -1,0 +1,73 @@
+package ro.utcn.pt.bonta.DAO;
+
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+
+import ro.utcn.pt.bonta.model.Customer;
+import ro.utcn.pt.bonta.model.Order;
+import ro.utcn.pt.bonta.model.Product;
+
+public class OrderDAO {
+
+	private static Connection c;
+	private static Statement stmt;
+
+	public OrderDAO(Connection c, Statement stmt) {
+		OrderDAO.c = c;
+		OrderDAO.stmt = stmt;
+	}
+
+	public static ArrayList<Order> getOrders() {
+		ArrayList<Order> ordersLists = new ArrayList<Order>();
+
+		try {
+			stmt = c.createStatement();
+			ResultSet rs = stmt.executeQuery("SELECT * FROM 'Order';");
+			while (rs.next()) {
+				String id = rs.getString("id");
+				String customerCNP = rs.getString("customerCNP");
+				String productID = rs.getString("productID");
+				int quantity = rs.getInt("quantity");
+
+				ordersLists.add(new Order(id, customerCNP, productID, quantity));
+				System.out.println("id = " + id);
+				System.out.println("customerCNP = " + customerCNP);
+				System.out.println("productID = " + productID);
+				System.out.println("quantity = " + quantity);
+
+				System.out.println();
+			}
+			rs.close();
+			stmt.close();
+			c.commit();
+		} catch (SQLException e) {
+			System.err.println(e.getClass().getName() + ": " + e.getMessage());
+			System.exit(0);
+			e.printStackTrace();
+		}
+
+		return ordersLists;
+	}
+
+	public static int insertNewOrder(ArrayList<Customer> customerList, ArrayList<Product> productsList,
+			Order ordersList) {
+
+		try {
+			stmt = c.createStatement();
+			String sql = "INSERT INTO 'Order' VALUES ('" + customer.getCNP() + "', '" + customer.getName() + "', "
+					+ customer.getAge() + ");";
+			System.out.println(sql);
+			stmt.executeUpdate(sql);
+			stmt.close();
+			c.commit();
+		} catch (SQLException e) {
+			System.err.println(e.getClass().getName() + ": " + e.getMessage());
+			e.printStackTrace();
+			return 0;
+		}
+		return 1;
+	}
+}

@@ -1,0 +1,16 @@
+package ro.utcn.pt.bonta.model;
+
+import java.util.ArrayList;
+
+public class Order {
+	private int id;
+	private int warehouseId;
+	private int customerId;
+	private ArrayList<Product> products;
+	
+	public Order(int id, int warehouseId, int customerId){
+		this.id = id;
+		this.warehouseId = wa
+		
+	}
+}

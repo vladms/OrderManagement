@@ -1,0 +1,187 @@
+package ro.utcn.pt.bonta.presentation;
+
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.util.ArrayList;
+
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
+import ro.utcn.pt.bonta.model.Customer;
+
+public class EditCustomerScreen {
+	private Customer selectedCustomer;
+	public JFrame mainFrame;
+	private JPanel controlPanel;
+
+	private JComboBox<?> customersDropDownList;
+
+	private JTextField cnpTextField;
+	private JTextField nameTextField;
+	private JTextField ageTextField;
+
+	private JButton cancelButton;
+	private JButton deleteButton;
+	private JButton saveButton;
+
+	private AppInterfaceButtonEvents buttonEventHandler;
+	private ArrayList<Customer> customersList;
+
+	public EditCustomerScreen(AppInterfaceButtonEvents buttonEventHandler) {
+		this.buttonEventHandler = buttonEventHandler;
+	}
+
+	public void prepareComponents(ArrayList<Customer> customersList) {
+		this.customersList = customersList;
+		this.prepareGUI();
+		this.prepareUserSelection();
+	}
+
+	private void prepareGUI() {
+		mainFrame = new JFrame("Edit customer");
+		mainFrame.setSize(500, 400);
+		mainFrame.setLayout(new GridLayout(1, 1));
+		mainFrame.addWindowListener(new WindowAdapter() {
+			public void windowClosing(WindowEvent windowEvent) {
+				System.exit(0);
+			}
+		});
+
+		controlPanel = new JPanel();
+		controlPanel.setLayout(new GridLayout(3, 1));
+
+		mainFrame.add(controlPanel);
+		mainFrame.setVisible(false);
+	}
+
+	private void prepareUserSelection() {
+		cancelButton = new JButton("Cancel");
+		cancelButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				buttonEventHandler.nothingHappenedOnUI();
+				mainFrame.setVisible(false);
+				mainFrame.remove(controlPanel);
+			}
+		});
+		String[] customers = new String[customersList.size() + 1];
+		customers[0] = "Select customer";
+		int size = customersList.size();
+		int index;
+		for (index = 0; index < size; ++index) {
+			customers[index + 1] = customersList.get(index).getCNP() + " " + customersList.get(index).getName();
+		}
+
+		customersDropDownList = new JComboBox(customers);
+		controlPanel.add(customersDropDownList);
+		controlPanel.add(cancelButton);
+
+		customersDropDownList.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (customersDropDownList.getSelectedIndex() != 0) {
+					selectedCustomer = customersList.get(customersDropDownList.getSelectedIndex() - 1);
+					mainFrame.remove(controlPanel);
+					placeElements();
+				}
+			}
+		});
+	}
+
+	/*
+	 * placeButtons(): Add elements on the controlPanel
+	 */
+	private void placeElements() {
+		controlPanel = new JPanel();
+		controlPanel.setLayout(new GridLayout(6, 1));
+		mainFrame.add(controlPanel);
+
+		cnpTextField = new JTextField(selectedCustomer.getCNP());
+		nameTextField = new JTextField(selectedCustomer.getName());
+		ageTextField = new JTextField(String.valueOf(selectedCustomer.getAge()));
+
+		cancelButton = new JButton("Cancel");
+		saveButton = new JButton("Edit customer");
+		deleteButton = new JButton("Delete customer");
+		deleteButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				buttonEventHandler.customerEdited(selectedCustomer, "", "", -1);
+				mainFrame.setVisible(false);
+				mainFrame.remove(controlPanel);
+			}
+		});
+		cancelButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				buttonEventHandler.nothingHappenedOnUI();
+				mainFrame.setVisible(false);
+				mainFrame.remove(controlPanel);
+			}
+		});
+
+		saveButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int errorNumber = 0;
+				if (nameTextField.getText().length() == 0) {
+					errorNumber = 4;
+				}
+				if (!(ageTextField.getText().matches("[0-9]+") && ageTextField.getText().length() > 0)) {
+					errorNumber = 2;
+					if (!(cnpTextField.getText().matches("[0-9]+") && cnpTextField.getText().length() > 0)) {
+						errorNumber = 3;
+					}
+				}
+
+				int size = customersList.size();
+				int index;
+				for (index = 0; index < size; ++index) {
+					if (customersList.get(index).getCNP() == cnpTextField.getText()
+							&& selectedCustomer.getCNP() != customersList.get(index).getCNP()) {
+						errorNumber = 1;
+					}
+				}
+				if (errorNumber == 0) {
+					buttonEventHandler.customerEdited(selectedCustomer, cnpTextField.getText(), nameTextField.getText(),
+							Integer.parseInt(ageTextField.getText()));
+					mainFrame.setVisible(false);
+					mainFrame.remove(controlPanel);
+				} else {
+					String errorMessage;
+					switch (errorNumber) {
+					case 1:
+						errorMessage = "Customer with CNP:" + cnpTextField.getText() + " already exists!";
+						break;
+					case 2:
+						errorMessage = "CNP should be numeric!";
+						break;
+					case 3:
+						errorMessage = "Age should be numeric!";
+						break;
+					case 4:
+						errorMessage = "Name should not be blank!";
+						break;
+					default:
+						errorMessage = "Error";
+						break;
+					}
+					JOptionPane.showMessageDialog(mainFrame, errorMessage);
+				}
+
+			}
+		});
+
+		controlPanel.add(cnpTextField);
+		controlPanel.add(nameTextField);
+		controlPanel.add(ageTextField);
+		controlPanel.add(cancelButton);
+		controlPanel.add(deleteButton);
+		controlPanel.add(saveButton);
+		controlPanel.repaint();
+
+		mainFrame.setVisible(true);
+	}
+}

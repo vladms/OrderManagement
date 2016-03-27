@@ -1,0 +1,5 @@
+package ro.utcn.pt.bonta.DAO;
+
+public class ProductDAO {
+
+}

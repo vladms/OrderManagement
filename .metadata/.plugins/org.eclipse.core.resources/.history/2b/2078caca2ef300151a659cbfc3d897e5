@@ -1,0 +1,10 @@
+package ro.utcn.pt.bonta.presentation;
+
+public class Controller {
+	private static MainScreen mainScreen;
+	private ArrayList<Customer> customersList;
+	public static void main(String[] args) {
+		mainScreen = new MainScreen();
+
+	}
+}

@@ -1,0 +1,24 @@
+package ro.utcn.pt.bonta.logic;
+
+import java.util.ArrayList;
+
+import ro.utcn.pt.bonta.model.Customer;
+import ro.utcn.pt.bonta.model.Order;
+import ro.utcn.pt.bonta.model.Product;
+import ro.utcn.pt.bonta.model.Warehouse;
+import ro.utcn.pt.bonta.presentation.MainScreen;
+
+public class Controller {
+	private static MainScreen mainScreen;
+	
+	private ArrayList<Customer> customersList;
+	private ArrayList<Product> productsList;
+	private Warehouse warehouse;
+	public Controller(){
+		customersList = new ArrayList<Customer>();
+		productsList = new ArrayList<Product>();
+		warehouse = new Warehouse();
+		mainScreen = new MainScreen(customersList, warehouse, productsList);
+
+	}
+}

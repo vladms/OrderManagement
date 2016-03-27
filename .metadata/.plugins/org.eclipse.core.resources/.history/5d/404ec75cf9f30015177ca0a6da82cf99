@@ -1,0 +1,83 @@
+package ro.utcn.pt.bonta.logic;
+
+import java.util.ArrayList;
+import java.sql.*;
+
+import ro.utcn.pt.bonta.model.Customer;
+import ro.utcn.pt.bonta.model.Order;
+import ro.utcn.pt.bonta.model.Product;
+import ro.utcn.pt.bonta.presentation.MainScreen;
+
+public class Controller {
+	private static MainScreen mainScreen;
+
+	private ArrayList<Customer> customersList;
+	private ArrayList<Product> productsList;
+	private ArrayList<Order> ordersList;
+
+	public Controller() {
+		// customersList = new ArrayList<Customer>();
+		// productsList = new ArrayList<Product>();
+		// mainScreen = new MainScreen(customersList, productsList, ordersList);
+//		Connection c = null;
+//		try {
+//			Class.forName("org.sqlite.JDBC");
+//			c = DriverManager.getConnection("jdbc:sqlite:pt.db");
+//		} catch (Exception e) {
+//			System.err.println(e.getClass().getName() + ": " + e.getMessage());
+//			System.exit(0);
+//		}
+//		System.out.println("Opened database successfully");
+//
+//		Statement stmt = null;
+//		
+//		try {
+//			stmt = c.createStatement();
+//		} catch (SQLException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		String sql = "INSERT INTO Customer VALUES ('23233', 'nameasd', 23);";
+//		try {
+//			stmt.executeUpdate(sql);
+//		} catch (SQLException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+		
+		
+		 Connection c = null;
+		    Statement stmt = null;
+		    try {
+		      Class.forName("org.sqlite.JDBC");
+		      c = DriverManager.getConnection("jdbc:sqlite:test.db");
+		      c.setAutoCommit(false);
+		      System.out.println("Opened database successfully");
+
+		      stmt = c.createStatement();
+		      String sql = "INSERT INTO Customer VALUES ('23233', 'nameasd', 23);"; 
+		      stmt.executeUpdate(sql);
+
+		      sql = "INSERT INTO COMPANY (ID,NAME,AGE,ADDRESS,SALARY) " +
+		            "VALUES (2, 'Allen', 25, 'Texas', 15000.00 );"; 
+		      stmt.executeUpdate(sql);
+
+		      sql = "INSERT INTO COMPANY (ID,NAME,AGE,ADDRESS,SALARY) " +
+		            "VALUES (3, 'Teddy', 23, 'Norway', 20000.00 );"; 
+		      stmt.executeUpdate(sql);
+
+		      sql = "INSERT INTO COMPANY (ID,NAME,AGE,ADDRESS,SALARY) " +
+		            "VALUES (4, 'Mark', 25, 'Rich-Mond ', 65000.00 );"; 
+		      stmt.executeUpdate(sql);
+
+		      stmt.close();
+		      c.commit();
+		      c.close();
+		    } catch ( Exception e ) {
+		      System.err.println( e.getClass().getName() + ": " + e.getMessage() );
+		      System.exit(0);
+		    }
+		    System.out.println("Records created successfully");
+		
+	}
+}
