@@ -129,8 +129,9 @@ public class EditCustomerScreen {
 				if (nameTextField.getText().length() == 0) {
 					errorNumber = 4;
 				}
-				if (!(ageTextField.getText().matches("[0-9]+") && ageTextField.getText().length() > 0)) {
-					errorNumber = 2;	
+				if (!(ageTextField.getText().matches("^([0-9]*[1-9][0-9]*(\\.[0-9]+)?|[0]+\\.[0-9]*[1-9][0-9]*)$")
+						&& ageTextField.getText().length() > 0) || (Integer.parseInt(ageTextField.getText())) < 0) {
+					errorNumber = 2;
 				}
 				if (!(cnpTextField.getText().matches("[0-9]+") && cnpTextField.getText().length() > 0)) {
 					errorNumber = 3;
@@ -159,7 +160,7 @@ public class EditCustomerScreen {
 						errorMessage = "CNP should be numeric!";
 						break;
 					case 3:
-						errorMessage = "Age should be numeric!";
+						errorMessage = "Age should be numeric and positive!";
 						break;
 					case 4:
 						errorMessage = "Name should not be blank!";

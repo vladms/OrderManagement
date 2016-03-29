@@ -88,10 +88,13 @@ public class CreateCustomerScreen {
 				if (nameTextField.getText().length() == 0) {
 					errorNumber = 4;
 				}
-				if (!(ageTextField.getText().matches("[0-9]+") && ageTextField.getText().length() > 0)) {
+				if (!(ageTextField.getText().matches("[0-9]+") && ageTextField.getText().length() > 0
+						|| (Integer.parseInt(ageTextField.getText())) < 0)
+						|| (Integer.parseInt(ageTextField.getText())) < 0) {
 					errorNumber = 2;
 				}
-				if (!(cnpTextField.getText().matches("[0-9]+") && cnpTextField.getText().length() > 0)) {
+				if (!(cnpTextField.getText().matches("[0-9]+") && cnpTextField.getText().length() > 0)
+						|| (Integer.parseInt(cnpTextField.getText())) < 0) {
 					errorNumber = 3;
 				}
 				int size = customersList.size();
@@ -113,10 +116,10 @@ public class CreateCustomerScreen {
 						errorMessage = "Customer with CNP:" + cnpTextField.getText() + " already exists!";
 						break;
 					case 2:
-						errorMessage = "CNP should be numeric!";
+						errorMessage = "CNP should be numeric and positive!";
 						break;
 					case 3:
-						errorMessage = "Age should be numeric!";
+						errorMessage = "Age should be numeric and positive!";
 						break;
 					case 4:
 						errorMessage = "Name should not be blank!";

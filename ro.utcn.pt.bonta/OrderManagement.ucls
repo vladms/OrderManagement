@@ -1,0 +1,560 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class-diagram version="1.1.9" icons="true" always-add-relationships="false" generalizations="false" realizations="true" 
+  associations="true" dependencies="true" nesting-relationships="true" router="FAN">  
+  <class id="1" language="java" name="ro.utcn.pt.bonta.model.Customer" project="ro.utcn.pt.bonta" 
+    file="/ro.utcn.pt.bonta/src/main/java/ro/utcn/pt/bonta/model/Customer.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="245" width="170" x="1778" y="1801"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="2" language="java" name="ro.utcn.pt.bonta.presentation.OrderScreen" project="ro.utcn.pt.bonta" 
+    file="/ro.utcn.pt.bonta/src/main/java/ro/utcn/pt/bonta/presentation/OrderScreen.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="389" width="491" x="754" y="1159"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="3" language="java" name="ro.utcn.pt.bonta.DAO.OrderDAO" project="ro.utcn.pt.bonta" 
+    file="/ro.utcn.pt.bonta/src/main/java/ro/utcn/pt/bonta/DAO/OrderDAO.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="155" width="454" x="1282" y="1588"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="4" language="java" name="ro.utcn.pt.bonta.presentation.EditCustomerScreen" project="ro.utcn.pt.bonta" 
+    file="/ro.utcn.pt.bonta/src/main/java/ro/utcn/pt/bonta/presentation/EditCustomerScreen.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="317" width="288" x="1797" y="1159"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="5" language="java" name="ro.utcn.pt.bonta.presentation.AppInterfaceButtonEvents" 
+    project="ro.utcn.pt.bonta" 
+    file="/ro.utcn.pt.bonta/src/main/java/ro/utcn/pt/bonta/presentation/AppInterfaceButtonEvents.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="173" width="305" x="853" y="1588"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="6" language="java" name="ro.utcn.pt.bonta.DAO.ProductDAO" project="ro.utcn.pt.bonta" 
+    file="/ro.utcn.pt.bonta/src/main/java/ro/utcn/pt/bonta/DAO/ProductDAO.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="191" width="324" x="62" y="856"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="7" language="java" name="ro.utcn.pt.bonta.presentation.CreateProductScreen" project="ro.utcn.pt.bonta" 
+    file="/ro.utcn.pt.bonta/src/main/java/ro/utcn/pt/bonta/presentation/CreateProductScreen.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="281" width="293" x="421" y="1159"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="8" language="java" name="ro.utcn.pt.bonta.presentation.MainScreen" project="ro.utcn.pt.bonta" 
+    file="/ro.utcn.pt.bonta/src/main/java/ro/utcn/pt/bonta/presentation/MainScreen.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="479" width="418" x="1276" y="337"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="9" language="java" name="ro.utcn.pt.bonta.presentation.TableScreen" project="ro.utcn.pt.bonta" 
+    file="/ro.utcn.pt.bonta/src/main/java/ro/utcn/pt/bonta/presentation/TableScreen.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="263" width="245" x="1021" y="856"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="10" language="java" name="ro.utcn.pt.bonta.main.Main" project="ro.utcn.pt.bonta" 
+    file="/ro.utcn.pt.bonta/src/main/java/ro/utcn/pt/bonta/main/Main.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="101" width="125" x="1715" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="11" language="java" name="ro.utcn.pt.bonta.DAO.CustomerDAO" project="ro.utcn.pt.bonta" 
+    file="/ro.utcn.pt.bonta/src/main/java/ro/utcn/pt/bonta/DAO/CustomerDAO.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="191" width="368" x="1797" y="856"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="12" language="java" name="ro.utcn.pt.bonta.model.Order" project="ro.utcn.pt.bonta" 
+    file="/ro.utcn.pt.bonta/src/main/java/ro/utcn/pt/bonta/model/Order.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="335" width="187" x="1131" y="1801"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="13" language="java" name="ro.utcn.pt.bonta.model.Product" project="ro.utcn.pt.bonta" 
+    file="/ro.utcn.pt.bonta/src/main/java/ro/utcn/pt/bonta/model/Product.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="317" width="200" x="381" y="1801"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="14" language="java" name="ro.utcn.pt.bonta.presentation.EditProductScreen" project="ro.utcn.pt.bonta" 
+    file="/ro.utcn.pt.bonta/src/main/java/ro/utcn/pt/bonta/presentation/EditProductScreen.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="335" width="277" x="83" y="1159"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="15" language="java" name="ro.utcn.pt.bonta.presentation.CreateCustomerScreen" project="ro.utcn.pt.bonta" 
+    file="/ro.utcn.pt.bonta/src/main/java/ro/utcn/pt/bonta/presentation/CreateCustomerScreen.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="263" width="304" x="1327" y="1159"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="16" language="java" name="ro.utcn.pt.bonta.business.Controller" project="ro.utcn.pt.bonta" 
+    file="/ro.utcn.pt.bonta/src/main/java/ro/utcn/pt/bonta/business/Controller.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="119" width="128" x="1715" y="178"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <association id="17">    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="18" name="buttonEventHandler"/>      
+      <multiplicity id="19" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="5" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="20">    
+    <bendpoint x="1188" y="1588"/>    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="21" name="customersList"/>      
+      <multiplicity id="22" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="1" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="23">    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="13"/>  
+  </dependency>  
+  <association id="24">    
+    <bendpoint x="858" y="856"/>    
+    <end type="SOURCE" refId="8" navigable="false">      
+      <attribute id="25" name="createProductScreen"/>      
+      <multiplicity id="26" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="7" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="27">    
+    <bendpoint x="1745" y="856"/>    
+    <end type="SOURCE" refId="8" navigable="false">      
+      <attribute id="28" name="editCustomerScreen"/>      
+      <multiplicity id="29" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="4" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="30">    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="1"/>  
+  </dependency>  
+  <association id="31">    
+    <bendpoint x="566" y="1588"/>    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="32" name="selectedProduct"/>      
+      <multiplicity id="33" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="13" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="34">    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="13"/>  
+  </dependency>  
+  <association id="35">    
+    <end type="SOURCE" refId="7" navigable="false">      
+      <attribute id="36" name="buttonEventHandler"/>      
+      <multiplicity id="37" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="5" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="38">    
+    <bendpoint x="1829" y="1588"/>    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="39" name="customersList"/>      
+      <multiplicity id="40" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="1" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="41">    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="12"/>  
+  </dependency>  
+  <association id="42">    
+    <bendpoint x="31" y="337"/>    
+    <bendpoint x="31" y="856"/>    
+    <bendpoint x="31" y="1159"/>    
+    <bendpoint x="31" y="1588"/>    
+    <end type="SOURCE" refId="16" navigable="false">      
+      <attribute id="43" name="productsList"/>      
+      <multiplicity id="44" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="13" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="45">    
+    <bendpoint x="1296" y="856"/>    
+    <bendpoint x="1296" y="1159"/>    
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="5"/>  
+  </realization>  
+  <association id="46">    
+    <bendpoint x="990" y="856"/>    
+    <end type="SOURCE" refId="8" navigable="false">      
+      <attribute id="47" name="orderScreen"/>      
+      <multiplicity id="48" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="2" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="49">    
+    <bendpoint x="251" y="1588"/>    
+    <end type="SOURCE" refId="14" navigable="false">      
+      <attribute id="50" name="productsList"/>      
+      <multiplicity id="51" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="13" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="52">    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="53" name="tableScreen"/>      
+      <multiplicity id="54" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="9" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="55">    
+    <end type="SOURCE" refId="10" navigable="false">      
+      <attribute id="56" name="controller"/>      
+      <multiplicity id="57" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="16" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="58">    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="12"/>  
+  </dependency>  
+  <dependency id="59">    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="1"/>  
+  </dependency>  
+  <association id="60">    
+    <bendpoint x="801" y="1588"/>    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="61" name="newOrdersList"/>      
+      <multiplicity id="62" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="12" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="63">    
+    <end type="SOURCE" refId="8" navigable="false">      
+      <attribute id="64" name="tableScreen"/>      
+      <multiplicity id="65" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="9" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="66">    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="67" name="buttonEventHandler"/>      
+      <multiplicity id="68" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="5" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="69">    
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="6"/>  
+  </dependency>  
+  <dependency id="70">    
+    <bendpoint x="1682" y="856"/>    
+    <bendpoint x="1682" y="1159"/>    
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="3"/>  
+  </dependency>  
+  <association id="71">    
+    <end type="SOURCE" refId="15" navigable="false">      
+      <attribute id="72" name="buttonEventHandler"/>      
+      <multiplicity id="73" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="5" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="74">    
+    <bendpoint x="52" y="1159"/>    
+    <bendpoint x="52" y="1588"/>    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="13"/>  
+  </dependency>  
+  <association id="75">    
+    <bendpoint x="1766" y="337"/>    
+    <bendpoint x="1766" y="856"/>    
+    <bendpoint x="1766" y="1159"/>    
+    <bendpoint x="1766" y="1588"/>    
+    <end type="SOURCE" refId="16" navigable="false">      
+      <attribute id="76" name="ordersList"/>      
+      <multiplicity id="77" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="12" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="78">    
+    <bendpoint x="1251" y="1588"/>    
+    <end type="SOURCE" refId="15" navigable="false">      
+      <attribute id="79" name="customersList"/>      
+      <multiplicity id="80" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="1" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="81">    
+    <bendpoint x="1317" y="856"/>    
+    <end type="SOURCE" refId="8" navigable="false">      
+      <attribute id="82" name="createCustomerScreen"/>      
+      <multiplicity id="83" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="15" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="84">    
+    <bendpoint x="822" y="1588"/>    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="85" name="allOrdersList"/>      
+      <multiplicity id="86" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="12" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="87">    
+    <bendpoint x="587" y="1588"/>    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="88" name="productsList"/>      
+      <multiplicity id="89" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="13" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="90">    
+    <bendpoint x="2195" y="337"/>    
+    <bendpoint x="2195" y="856"/>    
+    <bendpoint x="2195" y="1159"/>    
+    <bendpoint x="2195" y="1588"/>    
+    <end type="SOURCE" refId="16" navigable="false">      
+      <attribute id="91" name="customersList"/>      
+      <multiplicity id="92" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="1" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="93">    
+    <bendpoint x="1703" y="856"/>    
+    <bendpoint x="1745" y="1159"/>    
+    <bendpoint x="1787" y="1588"/>    
+    <end type="SOURCE" refId="8" navigable="false">      
+      <attribute id="94" name="customersList"/>      
+      <multiplicity id="95" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="1" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="96">    
+    <bendpoint x="897" y="337"/>    
+    <end type="SOURCE" refId="16" navigable="false">      
+      <attribute id="97" name="productDAO"/>      
+      <multiplicity id="98" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="6" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="99">    
+    <bendpoint x="1275" y="1159"/>    
+    <end type="SOURCE" refId="9" navigable="false">      
+      <attribute id="100" name="buttonEventHandler"/>      
+      <multiplicity id="101" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="5" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="102">    
+    <bendpoint x="1724" y="337"/>    
+    <bendpoint x="1724" y="856"/>    
+    <bendpoint x="1724" y="1159"/>    
+    <end type="SOURCE" refId="16" navigable="false">      
+      <attribute id="103" name="orderDAO"/>      
+      <multiplicity id="104" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="3" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="105">    
+    <bendpoint x="2115" y="1159"/>    
+    <bendpoint x="2115" y="1588"/>    
+    <end type="SOURCE" refId="11"/>    
+    <end type="TARGET" refId="1"/>  
+  </dependency>  
+  <association id="106">    
+    <bendpoint x="1209" y="1588"/>    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="107" name="selectedCustomer"/>      
+      <multiplicity id="108" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="1" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="109">    
+    <bendpoint x="411" y="1588"/>    
+    <end type="SOURCE" refId="7" navigable="false">      
+      <attribute id="110" name="productsList"/>      
+      <multiplicity id="111" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="13" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="112">    
+    <end type="SOURCE" refId="9" navigable="false">      
+      <attribute id="113" name="orderScreen"/>      
+      <multiplicity id="114" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="2" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="115">    
+    <bendpoint x="1808" y="1588"/>    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="116" name="selectedCustomer"/>      
+      <multiplicity id="117" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="1" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="118">    
+    <bendpoint x="416" y="856"/>    
+    <end type="SOURCE" refId="8" navigable="false">      
+      <attribute id="119" name="editProductScreen"/>      
+      <multiplicity id="120" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="14" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="121">    
+    <bendpoint x="230" y="1588"/>    
+    <end type="SOURCE" refId="14" navigable="false">      
+      <attribute id="122" name="selectedProduct"/>      
+      <multiplicity id="123" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="13" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="124">    
+    <bendpoint x="1661" y="856"/>    
+    <bendpoint x="1661" y="1159"/>    
+    <bendpoint x="1230" y="1588"/>    
+    <end type="SOURCE" refId="8" navigable="false">      
+      <attribute id="125" name="ordersList"/>      
+      <multiplicity id="126" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="12" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="127">    
+    <bendpoint x="437" y="856"/>    
+    <bendpoint x="390" y="1159"/>    
+    <bendpoint x="390" y="1588"/>    
+    <end type="SOURCE" refId="8" navigable="false">      
+      <attribute id="128" name="productsList"/>      
+      <multiplicity id="129" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="13" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="130">    
+    <end type="SOURCE" refId="14" navigable="false">      
+      <attribute id="131" name="buttonEventHandler"/>      
+      <multiplicity id="132" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="5" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="133">    
+    <bendpoint x="1787" y="337"/>    
+    <end type="SOURCE" refId="16" navigable="false">      
+      <attribute id="134" name="customerDAO"/>      
+      <multiplicity id="135" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="11" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="136">    
+    <end type="SOURCE" refId="16" navigable="false">      
+      <attribute id="137" name="mainScreen"/>      
+      <multiplicity id="138" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="8" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="139">    
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="11"/>  
+  </dependency>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    sort-features="false" accessors="true" visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true" static="true"/>    
+    <operations public="true" package="true" protected="true" private="true" static="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>

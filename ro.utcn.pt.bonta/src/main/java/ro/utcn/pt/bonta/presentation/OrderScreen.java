@@ -5,6 +5,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -49,7 +52,6 @@ public class OrderScreen {
 
 	public OrderScreen(AppInterfaceButtonEvents buttonEventHandler) {
 		this.buttonEventHandler = buttonEventHandler;
-		System.out.println("*****************");
 		this.newOrdersList = new ArrayList<Order>();
 	}
 
@@ -82,6 +84,7 @@ public class OrderScreen {
 		cancelButton = new JButton("Cancel");
 		cancelButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				newOrdersList = new ArrayList<Order>();
 				buttonEventHandler.nothingHappenedOnUI();
 				mainFrame.setVisible(false);
 				mainFrame.remove(controlPanel);
@@ -261,7 +264,29 @@ public class OrderScreen {
 	}
 
 	private void printOrder() {
-		System.out.println("Print the order\n");
+		PrintWriter writer;
+		try {
+			writer = new PrintWriter("order.txt", "UTF-8");
+			System.out.println("Print the order\n");
+			int index;
+			int size = newOrdersList.size();
+			final Object[][] table = new String[size][];
+			for(index = 0;index < size; ++index){
+				Order order = newOrdersList.get(index);
+				
+				table[0] = new String[] { order.getId(), order.getCustomerCNP(), order.getProductID(), String.valueOf(order.getQuantity()) };
+			}
+			
+			for (final Object[] row : table) {
+			    writer.print(String.format("%15s%15s%15s%15s\n", row));
+			}
+			writer.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+		
 	}
 	
 	

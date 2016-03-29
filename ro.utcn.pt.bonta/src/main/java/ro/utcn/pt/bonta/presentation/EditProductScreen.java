@@ -135,13 +135,18 @@ public class EditProductScreen {
 				if (nameTextField.getText().length() == 0) {
 					errorNumber = 5;
 				}
-				if (!(quantityTextField.getText().matches("^([0-9]*[1-9][0-9]*(\\.[0-9]+)?|[0]+\\.[0-9]*[1-9][0-9]*)$") && quantityTextField.getText().length() > 0)) {
-					errorNumber = 2;	
+				if (!(quantityTextField.getText().matches("^([0-9]*[1-9][0-9]*(\\.[0-9]+)?|[0]+\\.[0-9]*[1-9][0-9]*)$")
+						&& quantityTextField.getText().length() > 0)
+						|| (Integer.parseInt(quantityTextField.getText())) < 0) {
+					errorNumber = 2;
 				}
-				if (!(priceTextField.getText().matches("^([0-9]*[1-9][0-9]*(\\.[0-9]+)?|[0]+\\.[0-9]*[1-9][0-9]*)$") && priceTextField.getText().length() > 0)) {
+				if (!(priceTextField.getText().matches("^([0-9]*[1-9][0-9]*(\\.[0-9]+)?|[0]+\\.[0-9]*[1-9][0-9]*)$")
+						&& priceTextField.getText().length() > 0)
+						|| (Double.parseDouble(priceTextField.getText())) < 0) {
 					errorNumber = 3;
 				}
-				if (!(idTextField.getText().matches("^([0-9]*[1-9][0-9]*(\\.[0-9]+)?|[0]+\\.[0-9]*[1-9][0-9]*)$") && idTextField.getText().length() > 0)) {
+				if (!(idTextField.getText().matches("^([0-9]*[1-9][0-9]*(\\.[0-9]+)?|[0]+\\.[0-9]*[1-9][0-9]*)$")
+						&& idTextField.getText().length() > 0)) {
 					errorNumber = 4;
 				}
 
@@ -155,7 +160,8 @@ public class EditProductScreen {
 				}
 				if (errorNumber == 0) {
 					buttonEventHandler.productEdited(selectedProduct, idTextField.getText(), nameTextField.getText(),
-							Double.parseDouble(priceTextField.getText()), Integer.parseInt(quantityTextField.getText()));
+							Double.parseDouble(priceTextField.getText()),
+							Integer.parseInt(quantityTextField.getText()));
 					mainFrame.setVisible(false);
 					mainFrame.remove(controlPanel);
 				} else {
@@ -193,7 +199,7 @@ public class EditProductScreen {
 		controlPanel.add(deleteButton);
 		controlPanel.add(saveButton);
 		controlPanel.repaint();
-		
+
 		mainFrame.setVisible(true);
 	}
 }

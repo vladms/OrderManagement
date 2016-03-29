@@ -10,6 +10,10 @@ import ro.utcn.pt.bonta.model.Customer;
 import ro.utcn.pt.bonta.model.Order;
 import ro.utcn.pt.bonta.model.Product;
 import ro.utcn.pt.bonta.presentation.MainScreen;
+/**   
+* Controller.java - Controller : brain of the app. It makes the connection to the database and manages the interface.
+* @author  Vlad Bonta 
+*/
 
 public class Controller {
 	private MainScreen mainScreen;

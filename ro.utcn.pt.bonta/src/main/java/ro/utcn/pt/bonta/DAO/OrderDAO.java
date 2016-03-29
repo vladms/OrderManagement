@@ -66,6 +66,16 @@ public class OrderDAO {
 				stmt.executeUpdate(sql);
 				stmt.close();
 				c.commit();
+				int k;
+				for (k = 0; k < productsList.size(); ++k){
+					Product product = productsList.get(k);
+					if (product.getId().equals(order.getProductID())){
+						Product newProduct = product;
+						newProduct.setQuantity(product.getQuantity() - order.getQuantity());
+						ProductDAO.updateProduct(productsList, product, newProduct);		
+					}
+				}
+				
 			} catch (SQLException e) {
 				System.err.println(e.getClass().getName() + ": " + e.getMessage());
 				e.printStackTrace();

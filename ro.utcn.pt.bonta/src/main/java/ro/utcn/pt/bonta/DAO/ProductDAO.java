@@ -66,7 +66,7 @@ public class ProductDAO {
 		return 1;
 	}
 
-	public static int updateProduct(ArrayList<Product> customersList, Product oldProduct, Product editedProduct) {
+	public static int updateProduct(ArrayList<Product> productsList, Product oldProduct, Product editedProduct) {
 
 		try {
 			stmt = c.createStatement();
@@ -86,7 +86,7 @@ public class ProductDAO {
 		return 1;
 	}
 
-	public static int deleteProduct(ArrayList<Product> customersList, Product deleteProduct) {
+	public static int deleteProduct(ArrayList<Product> productsList, Product deleteProduct) {
 
 		try {
 			stmt = c.createStatement();

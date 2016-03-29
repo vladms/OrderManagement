@@ -91,11 +91,13 @@ public class CreateProductScreen {
 				if (nameTextField.getText().length() == 0) {
 					errorNumber = 5;
 				}
-				if (!(quantityTextField.getText().matches("[0-9]+") && quantityTextField.getText().length() > 0)) {
+				if (!(quantityTextField.getText().matches("[0-9]+") && quantityTextField.getText().length() > 0)
+						|| (Double.parseDouble(quantityTextField.getText())) < 0) {
 					errorNumber = 2;
 				}
-				if (!(priceTextField.getText().matches("[0-9]+") && priceTextField.getText().length() > 0)) {
-					errorNumber = 3;	
+				if (!(priceTextField.getText().matches("^([0-9]*[1-9][0-9]*(\\.[0-9]+)?|[0]+\\.[0-9]*[1-9][0-9]*)$")
+						&& priceTextField.getText().length() > 0) || (Integer.parseInt(priceTextField.getText())) < 0) {
+					errorNumber = 3;
 				}
 				if (!(idTextField.getText().matches("[0-9]+") && idTextField.getText().length() > 0)) {
 					errorNumber = 4;
@@ -111,7 +113,8 @@ public class CreateProductScreen {
 				System.out.println(errorNumber);
 				if (errorNumber == 0) {
 					buttonEventHandler.newProductCreated(idTextField.getText(), nameTextField.getText(),
-							Double.parseDouble(priceTextField.getText()), Integer.parseInt(quantityTextField.getText()));
+							Double.parseDouble(priceTextField.getText()),
+							Integer.parseInt(quantityTextField.getText()));
 					mainFrame.setVisible(false);
 				} else {
 					String errorMessage;
@@ -120,10 +123,10 @@ public class CreateProductScreen {
 						errorMessage = "Product with ID:" + idTextField.getText() + " already exists!";
 						break;
 					case 2:
-						errorMessage = "Quantity should be numeric!";
+						errorMessage = "Quantity should be numeric and positive!";
 						break;
 					case 3:
-						errorMessage = "Price should be numeric!";
+						errorMessage = "Price should be numeric and positive!";
 						break;
 					case 4:
 						errorMessage = "ID should be numeric!";

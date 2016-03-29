@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class-diagram version="1.1.9" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
+  associations="true" dependencies="true" nesting-relationships="true" router="FAN">  
+  <package id="1" language="java" name="ro.utcn.pt.bonta.model" project="ro.utcn.pt.bonta" 
+    file="/ro.utcn.pt.bonta/src/main/java/ro/utcn/pt/bonta/model" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="52" width="181" x="181" y="446"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <package id="2" language="java" name="ro.utcn.pt.bonta.main" project="ro.utcn.pt.bonta" 
+    file="/ro.utcn.pt.bonta/src/main/java/ro/utcn/pt/bonta/main" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="52" width="172" x="351" y="78"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <package id="3" language="java" name="ro.utcn.pt.bonta.business" project="ro.utcn.pt.bonta" 
+    file="/ro.utcn.pt.bonta/src/main/java/ro/utcn/pt/bonta/business" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="52" width="202" x="351" y="170"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <package id="4" language="java" name="ro.utcn.pt.bonta.presentation" project="ro.utcn.pt.bonta" 
+    file="/ro.utcn.pt.bonta/src/main/java/ro/utcn/pt/bonta/presentation" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="52" width="226" x="104" y="262"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <package id="5" language="java" name="ro.utcn.pt.bonta.DAO" project="ro.utcn.pt.bonta" 
+    file="/ro.utcn.pt.bonta/src/main/java/ro/utcn/pt/bonta/DAO" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="52" width="170" x="181" y="354"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <dependency id="6">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="3"/>  
+  </dependency>  
+  <dependency id="7">    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="4"/>  
+  </dependency>  
+  <dependency id="8">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="5"/>  
+  </dependency>  
+  <dependency id="9">    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="1"/>  
+  </dependency>  
+  <dependency id="10">    
+    <bendpoint x="150" y="354"/>    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="1"/>  
+  </dependency>  
+  <dependency id="11">    
+    <bendpoint x="360" y="262"/>    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="5"/>  
+  </dependency>  
+  <dependency id="12">    
+    <bendpoint x="381" y="262"/>    
+    <bendpoint x="381" y="354"/>    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="1"/>  
+  </dependency>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    sort-features="false" accessors="true" visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true" static="true"/>    
+    <operations public="true" package="true" protected="true" private="true" static="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>
